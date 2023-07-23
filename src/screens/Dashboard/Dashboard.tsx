@@ -25,7 +25,9 @@ const Dashboard = () => {
     (title: string, categoryId: string) => {
       return (
         <View style={styles.sectionHeader}>
-          <Text style={styles.header}>{title}</Text>
+          <Text style={styles.header} numberOfLines={1}>
+            {title}
+          </Text>
           <SharpButton
             label={APP_TEXT.addItem}
             onPress={() => onAddItemPressed(categoryId)}

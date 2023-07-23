@@ -5,16 +5,11 @@ import { useAppSelector } from '../redux/Hooks';
 import { categoriesSelector } from '../redux/selectors';
 import styles from './styles';
 import { APP_TEXT } from '../strings';
-import { Image, TouchableOpacity } from 'react-native';
-import { Images } from '../assets';
-import { CommonStyles } from '../theme';
-import { useNavigation } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const DrawerNavigator = () => {
   const { categories } = useAppSelector(categoriesSelector);
-  //   const navigation = useNavigation<IDrawerNavigationProp>();
   return (
     <Drawer.Navigator
       screenOptions={{

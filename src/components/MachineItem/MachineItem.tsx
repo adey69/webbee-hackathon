@@ -33,7 +33,7 @@ const MachineItem = (props: IMachineItemProps) => {
       {fields?.map((field, index) => {
         return (
           <View key={field?.id} style={Alignment.MBsmall}>
-            {field.type === 'text' && (
+            {field?.type === 'text' && (
               <TextInput
                 mode="outlined"
                 label={
@@ -61,7 +61,7 @@ const MachineItem = (props: IMachineItemProps) => {
                 style={styles.titleField}
               />
             )}
-            {field.type === 'date' && (
+            {field?.type === 'date' && (
               <TouchableOpacity
                 onPress={() =>
                   onDateFieldPressed(
@@ -91,7 +91,7 @@ const MachineItem = (props: IMachineItemProps) => {
                 </View>
               </TouchableOpacity>
             )}
-            {field.type === 'checkbox' && (
+            {field?.type === 'checkbox' && (
               <View style={CommonStyles.flexRow}>
                 <Switch
                   value={
@@ -125,7 +125,7 @@ const MachineItem = (props: IMachineItemProps) => {
                 </Text>
               </View>
             )}
-            {field.type === 'number' && (
+            {field?.type === 'number' && (
               <TextInput
                 mode="outlined"
                 inputMode="numeric"
@@ -141,16 +141,17 @@ const MachineItem = (props: IMachineItemProps) => {
                       : `${APP_TEXT.unnamedField} ${index}`
                   ]
                 }
-                onChangeText={text =>
+                onChangeText={text => {
+                  const numericText = text.replace(/[^0-9]/g, '');
                   onFieldValueUpdated(
-                    text,
+                    numericText,
                     machine?.id,
                     category?.id,
                     field?.label?.length > 0
                       ? field?.label
                       : `${APP_TEXT.unnamedField} ${index}`,
-                  )
-                }
+                  );
+                }}
                 style={styles.titleField}
               />
             )}

@@ -13,6 +13,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     ...Alignment.MVsmall,
     fontWeight: '700',
+    maxWidth: '70%',
   },
   separator: { height: 10 },
   sectionFooter: {
