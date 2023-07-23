@@ -6,17 +6,20 @@ import { useDashboard } from './Hooks';
 import { APP_TEXT } from '../../strings';
 
 const Dashboard = () => {
-  const { sectionListData, onAddItemPressed, onRemoveItemPressed } =
+  const { sectionListData, categories, onAddItemPressed, onRemoveItemPressed } =
     useDashboard();
 
-  const renderSectionFooter = useCallback((section: IMachineItem[]) => {
-    if (section?.length !== 0) return null;
-    return (
-      <View style={styles.sectionFooter}>
-        <Text style={styles.footerText}>{APP_TEXT.noData}</Text>
-      </View>
-    );
-  }, []);
+  const renderSectionFooter = useCallback(
+    (section: IMachineItem[]) => {
+      if (section?.length !== 0) return null;
+      return (
+        <View style={styles.sectionFooter}>
+          <Text style={styles.footerText}>{APP_TEXT.noData}</Text>
+        </View>
+      );
+    },
+    [categories],
+  );
 
   const renderSectionHeader = useCallback(
     (title: string, categoryId: string) => {
@@ -30,7 +33,7 @@ const Dashboard = () => {
         </View>
       );
     },
-    [],
+    [categories],
   );
 
   return (

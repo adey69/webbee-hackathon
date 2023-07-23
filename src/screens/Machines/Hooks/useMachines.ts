@@ -7,7 +7,7 @@ import { setCategories } from '../../../redux/slices/categoriesSlice';
 export default (categoryId: string) => {
   const { categories } = useAppSelector(categoriesSelector);
   const currentCategoryIndex = categories.findIndex(
-    cat => cat.id === categoryId,
+    cat => cat.id === categoryId ?? '',
   );
   const currentCategory = useMemo(
     () => categories[currentCategoryIndex],

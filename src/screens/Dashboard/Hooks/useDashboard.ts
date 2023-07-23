@@ -46,7 +46,6 @@ export default () => {
       );
       const prevCategories = [...categories];
       const updatedCategory = { ...prevCategories[currentCategoryIndex] };
-
       updatedCategory.machines = [
         ...updatedCategory.machines,
         {
@@ -54,12 +53,13 @@ export default () => {
         },
       ];
       prevCategories[currentCategoryIndex] = updatedCategory;
-      dispatch(setCategories([...prevCategories]));
+      dispatch(setCategories(prevCategories));
     },
     [categories],
   );
 
   return {
+    categories,
     sectionListData,
     onRemoveItemPressed,
     onAddItemPressed,

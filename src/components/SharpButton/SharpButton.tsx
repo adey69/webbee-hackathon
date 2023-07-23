@@ -4,16 +4,16 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
+  TouchableOpacityProps,
   ViewStyle,
 } from 'react-native';
 
 import styles from './styles';
 
-interface ISharpButtonProps {
+interface ISharpButtonProps extends TouchableOpacityProps {
   label: string;
   textStyle?: StyleProp<TextStyle>;
   buttonStyle?: StyleProp<ViewStyle>;
-  onPress: (...args: any[]) => any;
 }
 
 const SharpButton = (props: ISharpButtonProps) => {
